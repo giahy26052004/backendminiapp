@@ -21,6 +21,7 @@ const corsOptions = {
     "http://localhost:3000",
     "http://localhost:3001",
     "https://frontendadmin.onrender.com",
+    "https://zalo.me/s/1770153118820763470/?env=DEVELOPMENT&version=zdev-8ffa34e4",
   ], // Thay thế bằng các URL frontend của bạn
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,

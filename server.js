@@ -17,7 +17,11 @@ app.use(express.json());
 
 // Cấu hình CORS
 const corsOptions = {
-  origin: ["http://localhost:3000", "http://localhost:3001"], // Thay thế bằng các URL frontend của bạn
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://frontendadmin.onrender.com",
+  ], // Thay thế bằng các URL frontend của bạn
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
 };

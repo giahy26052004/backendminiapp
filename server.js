@@ -4,12 +4,14 @@ const newsRoutes = require("./routes/newsRoutes");
 const majorRoutes = require("./routes/majorRoutes");
 const tuitionRoutes = require("./routes/tuitionRoutes");
 
+const path = require("path");
 const cors = require("cors"); // Import CORS
 const dotenv = require("dotenv"); // Import dotenv
-
-const app = express();
 const PORT = 3009;
+const app = express();
 
+// Cấu hình phục vụ các tệp tin tĩnh từ thư mục 'uploads'
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Sử dụng dotenv để load biến môi trường từ .env file
 dotenv.config();
 

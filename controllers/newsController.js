@@ -37,7 +37,7 @@ exports.createNews = async (req, res) => {
     const newNews = new News({
       title,
       content,
-      file: req.file.path, // Lưu đường dẫn tới file
+      file: req.file.filename, // Lưu đường dẫn tới file
     });
 
     await newNews.save();
@@ -64,7 +64,7 @@ exports.updateNews = async (req, res) => {
       }
 
       // Add the new file path
-      updatedData.file = req.file.path;
+      updatedData.file = req.file.filename;
     }
 
     const updatedNews = await News.findByIdAndUpdate(

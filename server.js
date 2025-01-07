@@ -28,6 +28,17 @@ app.use(cors(corsOptions));
 
 // Kiểm tra biến môi trường MONGODBURL
 console.log("process.env.MONGODBURL", process.env.MONGODBURL);
+app.get("/image/:filename", (req, res) => {
+  const filename = req.params.filename;
+  const filePath = path.join(__dirname, "uploads", filename);
+
+  // Kiểm tra xem tệp có tồn tại không
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.status(404).send("Tệp không tìm thấy");
+  }
+});
 
 // Kết nối đến MongoDB
 mongoose

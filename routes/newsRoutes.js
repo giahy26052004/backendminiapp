@@ -8,5 +8,5 @@ router.post("/", upload.single("file"), newsController.createNews);
 
 router.put("/:id", upload.single("file"), newsController.updateNews);
 router.delete("/:id", newsController.deleteNews);
-
+router.get("/image/:filename", newsController.getImage);
 module.exports = router;

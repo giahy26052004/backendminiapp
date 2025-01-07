@@ -95,3 +95,14 @@ exports.deleteNews = async (req, res) => {
     res.status(500).send("Lỗi khi xóa tin tức");
   }
 };
+exports.getImage = async (req, res) => {
+  const filename = req.params.filename;
+  const imagePath = path.resolve(__dirname, "..", "uploads", filename);
+
+  // Kiểm tra xem tệp có tồn tại không
+  if (fs.existsSync(imagePath)) {
+    res.sendFile(imagePath);
+  } else {
+    res.status(404).send("Tệp không tìm thấy");
+  }
+};

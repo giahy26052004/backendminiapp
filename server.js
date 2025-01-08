@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const newsRoutes = require("./routes/newsRoutes");
 const majorRoutes = require("./routes/majorRoutes");
 const tuitionRoutes = require("./routes/tuitionRoutes");
+const slideRoutes = require("./routes/slideRoutes"); // Đảm bảo import slideRoutes
 
 const path = require("path");
 const cors = require("cors"); // Import CORS
@@ -12,6 +13,7 @@ const app = express();
 
 // Cấu hình phục vụ các tệp tin tĩnh từ thư mục 'uploads'
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 // Sử dụng dotenv để load biến môi trường từ .env file
 dotenv.config();
 
@@ -28,6 +30,7 @@ app.use(cors(corsOptions));
 
 // Kiểm tra biến môi trường MONGODBURL
 console.log("process.env.MONGODBURL", process.env.MONGODBURL);
+
 app.get("/image/:filename", (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(__dirname, "uploads", filename);
@@ -52,7 +55,8 @@ mongoose
 // Sử dụng các routes
 app.use("/api/news", newsRoutes);
 app.use("/api/majors", majorRoutes);
-app.use("/api/tuition", tuitionRoutes); // Thêm dòng này
+app.use("/api/slide", slideRoutes); // Đảm bảo sử dụng slideRoutes ở đây
+app.use("/api/tuition", tuitionRoutes);
 
 // Khởi động server
 app.listen(PORT, () => {

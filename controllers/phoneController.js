@@ -24,6 +24,25 @@ exports.getPhoneById = async (req, res) => {
     res.status(500).json({ success: false, message: "Lỗi server" });
   }
 };
+// Kiểm tra số điện thoại đã tồn tại chưa
+exports.checkPhoneExists = async (req, res) => {
+  try {
+    const phone = await Phone.findOne({ phone: req.params.phone });
+    if (phone) {
+      return res.status(200).json({
+        success: true,
+        message: "Số điện thoại đã quay!",
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: "Số điện thoại chưa quay!",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Lỗi server" });
+  }
+};
 
 // Thêm số điện thoại mới
 exports.createPhone = async (req, res) => {

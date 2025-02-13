@@ -7,5 +7,5 @@ router.get("/:id", phoneController.getPhoneById); // Lấy số điện thoại 
 router.post("/", phoneController.createPhone); // Thêm số điện thoại mới
 router.put("/:id", phoneController.updatePhone); // Cập nhật số điện thoại
 router.delete("/:id", phoneController.deletePhone); // Xóa số điện thoại
-
+router.get("/check/:phone", phoneController.checkPhoneExists);
 module.exports = router;

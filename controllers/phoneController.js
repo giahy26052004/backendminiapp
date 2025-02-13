@@ -29,18 +29,27 @@ exports.getPhoneById = async (req, res) => {
 exports.createPhone = async (req, res) => {
   try {
     const { phone } = req.body;
-    let newPhone = new Phone({ phone });
 
+    // Kiểm tra xem số điện thoại đã tồn tại chưa
+    const existingPhone = await Phone.findOne({ phone });
+    if (existingPhone) {
+      return res.status(400).json({
+        success: false,
+        message: "Số điện thoại đã tồn tại!",
+      });
+    }
+
+    // Nếu chưa tồn tại, thêm mới vào database
+    const newPhone = new Phone({ phone });
     await newPhone.save();
+
     res.json({
       success: true,
       message: "Số điện thoại đã được lưu!",
       data: newPhone,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, message: "Lỗi server hoặc số đã tồn tại" });
+    res.status(500).json({ success: false, message: "Lỗi server" });
   }
 };
 

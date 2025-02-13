@@ -5,4 +5,4 @@ const giftSchema = new mongoose.Schema({
   name: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Gift", giftSchema);
+module.exports = mongoose.model("gift", giftSchema);

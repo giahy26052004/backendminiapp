@@ -1,6 +1,6 @@
 // routes/giftRoutes.js
 const express = require("express");
-const Gift = require("../models/Gift");
+const Gift = require("../models/gift");
 const router = express.Router();
 
 // Lấy danh sách quà tặng

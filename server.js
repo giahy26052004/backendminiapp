@@ -4,6 +4,7 @@ const newsRoutes = require("./routes/newsRoutes");
 const majorRoutes = require("./routes/majorRoutes");
 const tuitionRoutes = require("./routes/tuitionRoutes");
 const slideRoutes = require("./routes/slideRoutes"); // Đảm bảo import slideRoutes
+const phonesRoutes = require("./routes/phonesRoutes"); // Đảm bảo import slideRoutes
 
 const path = require("path");
 const cors = require("cors"); // Import CORS
@@ -57,7 +58,7 @@ app.use("/api/news", newsRoutes);
 app.use("/api/majors", majorRoutes);
 app.use("/api/slide", slideRoutes); // Đảm bảo sử dụng slideRoutes ở đây
 app.use("/api/tuition", tuitionRoutes);
-
+app.use("/api/phones", phonesRoutes);
 // Khởi động server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
